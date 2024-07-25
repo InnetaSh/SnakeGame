@@ -1,6 +1,8 @@
 ﻿using SnakeGame;
 using System.Threading;
 using static SnakeGame.Board;
+using System;
+using System.IO;
 
 Board board = new Board(2, 2, 2);
 Game();
@@ -89,13 +91,14 @@ void Game()
             
 
             string filePath = "score.txt"; 
-            string lineToAdd = $"{name.ToUpper()} - {board.score.ToString(),-10}";
+            
 
             try
             {
                 using (StreamWriter writer = File.AppendText(filePath))
                 {
-                    writer.WriteLine(lineToAdd);
+                    writer.WriteLine($"{name, -15} | {board.score.ToString(),10}");
+                    writer.WriteLine(new string('-', 36));
                 }
                 
             }
