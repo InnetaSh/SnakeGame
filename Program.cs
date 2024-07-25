@@ -4,11 +4,12 @@ using static SnakeGame.Board;
 using System;
 using System.IO;
 
-Board board = new Board(2, 2, 2);
+
 Menu();
 
 void Game()
 {
+    Board board = new Board(2, 2, 2);
     Console.WriteLine("Enter your name");
     var name = Console.ReadLine();
 
@@ -97,7 +98,7 @@ void Game()
             {
                 using (StreamWriter writer = File.AppendText(filePath))
                 {
-                    writer.WriteLine($"{name, -15} | {board.score.ToString(),10}");
+                    writer.WriteLine($"| {name, -20} | {board.score.ToString(),20} |");
                     writer.WriteLine(new string('-', 36));
                 }
                 
