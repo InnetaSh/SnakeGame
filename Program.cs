@@ -5,7 +5,7 @@ using System;
 using System.IO;
 
 Board board = new Board(2, 2, 2);
-Game();
+Menu();
 
 void Game()
 {
@@ -111,8 +111,61 @@ void Game()
 
     }
 
-   
-   
+}
+
+void ReadFile()
+{
+    string filePath = "score.txt";
+
+    if (File.Exists(filePath))
+    {
+        using (var reader = new StreamReader(filePath))
+        {
+            string line;
+            while ((line = reader.ReadLine()) != null)
+            {
+                Console.WriteLine(line); 
+            }
+        }
+    }
+    else
+    {
+        Console.WriteLine($"Файл {filePath} не найден.");
+    }
+}
+
+void Menu()
+{
+    Console.WriteLine("Выберите раздел меню");
+    Console.WriteLine("1 - посмотреть счет");
+    Console.WriteLine("2 - играть");
+    Console.WriteLine("3 - выход");
+    Console.WriteLine("------------------------------------");
+    int input;
+    while (!Int32.TryParse(Console.ReadLine(), out input) || input < 1 || input > 3)
+    {
+        Console.WriteLine("Не верный ввод.Введите номер меню:");
+    }
+    switch (input)
+    {
+        case 1:
+            Console.Clear();
+            ReadFile();
+            Console.WriteLine("Нажмите Enter для выхода в меню ");
+            Console.ReadLine();
+            Console.Clear();
+            Menu();
+            break;
+        case 2:
+            Console.Clear();
+            Game();
+            Console.Clear();
+            Menu();
+            break;
+        case 3:
+            break;
+    }
+    Console.Clear();
     
 }
 
