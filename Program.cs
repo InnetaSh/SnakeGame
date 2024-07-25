@@ -15,6 +15,10 @@ void Game()
     while (flag)
     {
       
+        Console.CursorVisible = false;
+        Console.SetCursorPosition(0, 0);
+        Thread.Sleep(200);
+
         board.SnakeMove(direction);
         board.Print();
         
@@ -42,12 +46,35 @@ void Game()
                     direction = Direction.Right;
                     break;
                 case ConsoleKey.Escape:
-                    return; 
-               
+                    return;
+                case ConsoleKey.Enter:
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Pause 5sec");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Pause 4sec");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Pause 3sec");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Pause 2sec");
+                    Thread.Sleep(1000);
+                    Console.Clear();
+                    Console.WriteLine();
+                    Console.WriteLine("Pause 1sec");
+                    Thread.Sleep(1000);
+                    break; 
+
                 default:
                     direction = Direction.Right;
                     break;
             }
+            
         }
 
         if (board.gameOver == true)
@@ -62,7 +89,7 @@ void Game()
             
 
             string filePath = "score.txt"; 
-            string lineToAdd = $"{name.ToUpper(),-20} - {board.score.ToString()}";
+            string lineToAdd = $"{name.ToUpper()} - {board.score.ToString(),-10}";
 
             try
             {
@@ -77,11 +104,7 @@ void Game()
                 Console.WriteLine($"Ошибка при добавлении счета в файл: {ex.Message}");
             }
         }
-
-        Thread.Sleep(200);
-        Console.Clear();
-
-
+   
 
     }
 

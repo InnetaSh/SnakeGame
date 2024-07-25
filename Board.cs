@@ -83,7 +83,7 @@ namespace SnakeGame
                     
                     if (snake.snakeBody.Any(cell => cell.X == j && cell.Y == i))
                     {
-                        Console.Write("*");
+                        Console.Write("O");
                     }
                     else if (food.X == j && food.Y == i)
                     {
@@ -100,7 +100,7 @@ namespace SnakeGame
             }
             for (int i = 0; i <= Size + 1; i++)
             {
-            
+
                 Console.Write("-");
             }
         }
